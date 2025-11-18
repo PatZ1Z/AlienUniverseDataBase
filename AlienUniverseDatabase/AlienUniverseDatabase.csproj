@@ -9,9 +9,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Models\"/>
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="Assets/Data/filmyAlien.txt">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Link>Data/filmyAlien.txt</Link>
+        </Content>
+    </ItemGroup>
+
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.3.4"/>
