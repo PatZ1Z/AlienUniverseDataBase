@@ -2,7 +2,9 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reactive;
 using AlienUniverseDatabase.Models;
+using AlienUniverseDatabase.Views;
 using ReactiveUI;
 
 namespace AlienUniverseDatabase.ViewModels;
@@ -28,12 +30,29 @@ public class MainWindowViewModel : ViewModelBase
         get => _showSections;
         set => this.RaiseAndSetIfChanged(ref _showSections, value);
     }
+    
+    public ReactiveCommand<Unit, Unit> ShowHeroesCommand { get; }
 
     public MainWindowViewModel()
     {
         var baseDir = AppContext.BaseDirectory;
         var path = Path.Combine(baseDir, "Data", "filmyAlien.txt");
         LoadFile(path);
+        
+        ShowHeroesCommand = ReactiveCommand.Create(ShowHeroes);
+    }
+    
+    private void ShowHeroes()
+    {
+        if (WybranyFilm == null)
+            return;
+
+        var window = new HeroesWindow
+        {
+            DataContext = new HeroesViewModel(WybranyFilm)
+        };
+
+        window.Show();
     }
 
     private void LoadFile(string path)

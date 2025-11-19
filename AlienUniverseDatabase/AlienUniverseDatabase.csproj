@@ -17,6 +17,10 @@
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Link>Data/filmyAlien.txt</Link>
         </Content>
+        <Content Include="Assets/Data/bohaterowieAlien.txt">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Link>Data/bohaterowieAlien.txt</Link>
+        </Content>
     </ItemGroup>
 
 
