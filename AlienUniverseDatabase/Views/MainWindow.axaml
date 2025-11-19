@@ -35,8 +35,15 @@
             <TextBlock Text="{Binding Gatunek}" Margin="0 0 0 10"/>
             <TextBlock Text="Czas trwania:" FontWeight="Bold"/>
             <TextBlock Text="{Binding CzasTrwania}" Margin="0 0 0 10"/>
-            <TextBlock Text="Ocena:" FontWeight="Bold"/>
-            <TextBlock Text="{Binding Ocena}" Margin="0 0 0 10"/>
+            <TextBlock Text="Ocena:" FontWeight="Bold" />
+            <ProgressBar Minimum="0"
+                         Maximum="10"
+                         Value="{Binding OcenaValue}" 
+                         Height="20" 
+                         Margin="0 0 0 5"/>
+            <TextBlock Text="{Binding Ocena}" 
+                       HorizontalAlignment="Right" 
+                       Margin="0 0 0 10"/>
             <TextBlock Text="Główne postacie:" FontWeight="Bold"/>
             <TextBlock Text="{Binding GlownePostacie}" Margin="0 0 0 10"/>
             <TextBlock Text="Statek:" FontWeight="Bold"/>

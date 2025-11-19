@@ -5,56 +5,50 @@
         x:DataType="vm:HeroesViewModel"
         Width="600" Height="600"
         Title="Bohaterowie">
+<ScrollViewer>
+    <StackPanel Margin="10" Spacing="5">
 
-    <ListBox ItemsSource="{Binding Bohaterowie}">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <StackPanel Margin="10" Spacing="3">
+        <!-- Filtr po rasie -->
+        <TextBlock Text="Filtruj po rasie:" FontWeight="Bold"/>
+        <ComboBox ItemsSource="{Binding Rasy}" SelectedItem="{Binding WybranaRasa}" Margin="0 0 0 10"/>
 
-                    <TextBlock>
-                        <Run Text="Imię i nazwisko: " FontWeight="Bold"/>
-                        <Run Text="{Binding ImieNazwisko}"/>
-                    </TextBlock>
 
-                    <TextBlock>
-                        <Run Text="Rola: " FontWeight="Bold"/>
-                        <Run Text="{Binding Rola}"/>
-                    </TextBlock>
+        <!-- Lista bohaterów -->
+        <ListBox ItemsSource="{Binding Bohaterowie}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="10" Spacing="3">
 
-                    <TextBlock>
-                        <Run Text="Aktor: " FontWeight="Bold"/>
-                        <Run Text="{Binding Aktor}"/>
-                    </TextBlock>
+                        <TextBlock Text="Imię i nazwisko:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding ImieNazwisko}" />
 
-                    <TextBlock>
-                        <Run Text="Rasa / Gatunek: " FontWeight="Bold"/>
-                        <Run Text="{Binding Rasa}"/>
-                    </TextBlock>
+                        <TextBlock Text="Rola:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Rola}" />
 
-                    <TextBlock>
-                        <Run Text="Funkcja w załodze: " FontWeight="Bold"/>
-                        <Run Text="{Binding Funkcja}"/>
-                    </TextBlock>
+                        <TextBlock Text="Aktor:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Aktor}" />
 
-                    <TextBlock>
-                        <Run Text="Charakterystyka: " FontWeight="Bold"/>
-                        <Run Text="{Binding Charakterystyka}"/>
-                    </TextBlock>
+                        <TextBlock Text="Rasa / Gatunek:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Rasa}" />
 
-                    <TextBlock>
-                        <Run Text="Los: " FontWeight="Bold"/>
-                        <Run Text="{Binding Los}"/>
-                    </TextBlock>
+                        <TextBlock Text="Funkcja w załodze:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Funkcja}" TextWrapping="Wrap"/>
 
-                    <TextBlock>
-                        <Run Text="Ciekawostka: " FontWeight="Bold"/>
-                        <Run Text="{Binding Ciekawostka}"/>
-                    </TextBlock>
+                        <TextBlock Text="Charakterystyka:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Charakterystyka}" TextWrapping="Wrap"/>
 
-                    <Separator Margin="0 10 0 10"/>
-                </StackPanel>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
+                        <TextBlock Text="Los:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Los}" TextWrapping="Wrap"/>
 
+                        <TextBlock Text="Ciekawostka:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Ciekawostka}" TextWrapping="Wrap"/>
+
+                        <Separator Margin="0 10 0 10"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </StackPanel>
+</ScrollViewer>
 </Window>

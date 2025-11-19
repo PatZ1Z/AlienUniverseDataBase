@@ -3,15 +3,33 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using AlienUniverseDatabase.Models;
+using ReactiveUI;
 
 namespace AlienUniverseDatabase.ViewModels;
 
 public class HeroesViewModel : ViewModelBase
 {
     public ObservableCollection<Hero> Bohaterowie { get; } = new();
+    private ObservableCollection<Hero> _allBohaterowie = new(); // wszystkie postacie
+
+    public ObservableCollection<string> Rasy { get; } = new();
+    
+    private string _wybranaRasa;
+    public string WybranaRasa
+    {
+        get => _wybranaRasa;
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _wybranaRasa, value);
+            ApplyFilter();
+        }
+    }
 
     public HeroesViewModel(Film film)
     {
+        Rasy.Add("Wszystkie");
+        WybranaRasa = "Wszystkie";
+        
         LoadHeroes(film);
     }
 
@@ -30,8 +48,7 @@ public class HeroesViewModel : ViewModelBase
 
         foreach (var sec in sections)
         {
-            var lines = sec.Split('\n',
-                StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
+            var lines = sec.Split('\n', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
             string get(string prefix) =>
                 lines.FirstOrDefault(l => l.StartsWith(prefix))?
@@ -51,13 +68,29 @@ public class HeroesViewModel : ViewModelBase
                 Ciekawostka = ExtractBlock(sec, "Ciekawostka", null)
             };
 
-            // filtrowanie — bohater musi należeć do wybranego filmu
-            if (h.Film.Contains(film.TytulOryginalny) ||
-                h.Film.Contains(film.TytulPolski))
+            if (h.Film.Contains(film.TytulOryginalny) || h.Film.Contains(film.TytulPolski))
             {
-                Bohaterowie.Add(h);
+                _allBohaterowie.Add(h);
+
+                // dodaj rasę do listy ComboBox jeśli jeszcze nie istnieje
+                if (!Rasy.Contains(h.Rasa))
+                    Rasy.Add(h.Rasa);
             }
         }
+
+        ApplyFilter();
+    }
+
+    private void ApplyFilter()
+    {
+        Bohaterowie.Clear();
+
+        var filtered = string.IsNullOrWhiteSpace(WybranaRasa) || WybranaRasa == "Wszystkie"
+            ? _allBohaterowie
+            : _allBohaterowie.Where(h => h.Rasa == WybranaRasa);
+
+        foreach (var h in filtered)
+            Bohaterowie.Add(h);
     }
 
     private string ExtractBlock(string sec, string start, string? end)
