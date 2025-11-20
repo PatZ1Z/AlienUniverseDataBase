@@ -9,17 +9,28 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="AlienUniverseDatabase">
     
-    <Grid ColumnDefinitions="2*,3*">
-
+    
+    <Grid ColumnDefinitions="2*,3*" RowDefinitions="2*,20*">
+        <Button Content="Dodaj nowy film"
+                Margin="0 20 0 0"
+                DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=Window}}"
+                x:DataType="vm:MainWindowViewModel"
+                Command="{Binding ShowNewFilmFormCommand}" />
+        <Button Grid.Column="1" Content="Usuń wybrany film"
+                Margin="0 20 0 0"
+                DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=Window}}"
+                x:DataType="vm:MainWindowViewModel"
+                Command="{Binding UsunFilmCommand}"
+                CommandParameter="{Binding WybranyFilm}" />
+        
         <!-- Lista tytułów filmów -->
-        <ListBox Grid.Column="0"
+        <ListBox Grid.Column="0" Grid.Row="1"
                  ItemsSource="{Binding Filmy}"
                  SelectedItem="{Binding WybranyFilm}"/>
 
+        
         <!-- Szczegóły filmu -->
-        <!-- Szczegóły filmu -->
-<ScrollViewer Grid.Column="1" Padding="10" IsVisible="{Binding ShowSections}">
-    <!-- Jedno bezpośrednie dziecko ScrollViewer: zewnętrzny StackPanel -->
+<ScrollViewer Grid.Column="1" Grid.Row="1" Padding="10" IsVisible="{Binding ShowSections}">
     <StackPanel>
 
         <!-- Sekcja szczegółów ma DataContext = WybranyFilm -->
@@ -53,8 +64,7 @@
             <TextBlock Text="Ciekawostka:" FontWeight="Bold"/>
             <TextBlock Text="{Binding Ciekawostka}" TextWrapping="Wrap" Margin="0 0 0 10"/>
         </StackPanel>
-
-        <!-- Przycisk poza wewnętrznym StackPanel, z DataContext ustawionym na MainWindowViewModel -->
+        
         <Button Content="Pokaż bohaterów"
                 Margin="0 20 0 0"
                 DataContext="{Binding DataContext, RelativeSource={RelativeSource AncestorType=Window}}"

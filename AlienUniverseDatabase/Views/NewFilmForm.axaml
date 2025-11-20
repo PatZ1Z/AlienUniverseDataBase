@@ -1,0 +1,90 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:AlienUniverseDatabase.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AlienUniverseDatabase.Views.NewFilmForm"
+        x:DataType="vm:NewFilmFormViewModel"
+        Title="Nowy Film">
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="10">
+        <StackPanel HorizontalAlignment="Center">
+           
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj tytuł oryginalny" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding TytulOryginalny}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj tytuł polski" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding TytulPolski}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj rok premiery" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding RokPremiery}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj reżysera" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding Rezyser}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj scenariusz" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding Scenariusz}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj gatunek" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding Gatunek}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj czas trwania" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding CzasTrwania}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj ocenę (IMDb)" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding Ocena}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj główne postacie" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding GlownePostacie}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj statek" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding Statek}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj opis fabuły" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding Opis}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <StackPanel Orientation="Vertical" Margin="0 10">
+                <TextBlock Text="Podaj ciekawostkę" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBox Width="300" Margin="10" Text="{Binding Ciekawostka}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            
+            <Button Content="Zapisz Film" Command="{Binding ZapiszFilmCommand}" Width="100" Margin="20" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>
